@@ -62,7 +62,7 @@ foreach(FILE ${SRCS} ${INCLS})
 endforeach()
 
 # add library
-add_library(FreeImage ${SRCS} ${INCLS})
+add_library(FreeImage  SHARED    ${SRCS} ${INCLS})
 
 # config library
 target_compile_definitions(FreeImage PRIVATE LIBRAW_NODLL OPJ_STATIC DISABLE_PERF_MEASUREMENT)
@@ -77,3 +77,10 @@ else()
 endif()
 
 target_include_directories(FreeImage PRIVATE ${INCLUDE})
+
+
+
+install ( TARGETS FreeImage DESTINATION lib )
+install ( FILES Source/FreeImage.h DESTINATION include )
+
+
